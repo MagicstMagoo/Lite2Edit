@@ -35,8 +35,8 @@ object WEReader {
                     BlockBuilder()
                         .position(Vec3i.fromBlockVector3(pos))
                         .state(
-                            baseBlock.blockType.id,
-                            baseBlock.states.entries.associate { (prop, value) -> prop.name to value.toString() },
+                            baseBlock.blockType.id(),
+                            baseBlock.states.entries.associate { (prop, value) -> prop.name() to value.toString() },
                             baseBlock.nbt?.toKyori()
                         )
                         .build()

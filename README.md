@@ -21,6 +21,19 @@ You can see the source code via: [https://github.com/Erik-Donath/lite2edit](http
 
 ---
 
+## Requirements
+
+| Component | Version |
+| --- | --- |
+| Minecraft | 26.3 (requires Java 25) |
+| [Fabric Loader](https://fabricmc.net/) | 0.19.5 or newer |
+| [Fabric Language Kotlin](https://modrinth.com/mod/fabric-language-kotlin) | 1.14.1 or newer |
+| [WorldEdit (Fabric build)](https://modrinth.com/plugin/worldedit) | `worldedit-mod-7.4.6-beta-02` or newer |
+
+Minecraft 26.1 was the first unobfuscated Java Edition release, so this build targets 26.1 and later only.
+
+---
+
 ## How to use
 
 1. Put the Lite2Edit mod JAR into your Fabric `mods/` folder.
@@ -32,9 +45,14 @@ You can see the source code via: [https://github.com/Erik-Donath/lite2edit](http
 If you prefer building from source, run:
 ```bash
 git clone https://github.com/Erik-Donath/Lite2Edit.git
-./gradlew build
+./gradlew build   # JDK 25 is required (Gradle 9.7.1, Loom 1.18.2)
 # copy the generated JAR from build/libs/ into your mods/ folder
 ```
+
+Building targets the WorldEdit release named by `worldedit_version` in `gradle.properties`
+(`worldedit-mod-7.4.6-beta-02`). That jar is fetched once from Modrinth and verified against its
+published SHA-512 before it is used as the compile-only WorldEdit API, because EngineHub's
+`7.4.6-SNAPSHOT` Maven artifacts are not always reachable.
 
 ---
 

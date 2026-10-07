@@ -69,10 +69,10 @@ object WEWriter {
 
         for ((propName, propValue) in properties) {
             val property = blockType.properties.find {
-                it.name.equals(propName, ignoreCase = true)
+                it.name().equals(propName, ignoreCase = true)
             } ?: continue
 
-            val candidate = property.values.find {
+            val candidate = property.values().find {
                 it.toString().equals(propValue, ignoreCase = true)
             } ?: continue
 

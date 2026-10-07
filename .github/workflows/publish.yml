@@ -9,8 +9,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  JAVA_VERSION: 21
-  MINECRAFT_VERSIONS: '["1.20.2", "1.20.4", "1.20.5", "1.20.6", "1.21", "1.21.1", "1.21.3", "1.21.4", "1.21.5", "1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10"]'
+  JAVA_VERSION: 25
+  MINECRAFT_VERSIONS: '["26.3"]'
 
 jobs:
   extract-metadata:
@@ -61,7 +61,7 @@ jobs:
 
       - name: Build mod JAR
         run: |
-          ./gradlew clean remapJar \
+          ./gradlew clean jar \
             -Pmod_version=${{ needs.extract-metadata.outputs.version }} \
             -Pminecraft_version=${{ matrix.minecraft_version }} \
             --no-daemon

@@ -4,9 +4,9 @@ import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardReader
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardWriter
-import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
+import java.nio.file.Path
 
 class LitematicaSchematicFormatter : ClipboardFormat {
     override fun getName(): String = "Litematica"
@@ -14,8 +14,9 @@ class LitematicaSchematicFormatter : ClipboardFormat {
     override fun getPrimaryFileExtension(): String = "litematic"
     override fun getFileExtensions(): Set<String> = setOf("litematic", "ltc")
 
-    override fun isFormat(file: File?): Boolean =
-        file?.name?.lowercase()?.let { name ->
+    // WorldEdit 7.4 deprecated isFormat(File); the Path overload is the supported one.
+    override fun isFormat(path: Path?): Boolean =
+        path?.fileName?.toString()?.lowercase()?.let { name ->
             getFileExtensions().any { name.endsWith(".$it") }
         } == true
 

@@ -44,7 +44,9 @@ object LitematicaWriter {
     private const val SUB_VERSION  = 1
     private const val DESCRIPTION  = "Thanks for using Lite2Edit"
 
-    private const val DATA_VERSION = 3700
+    // Data version of the Minecraft release this build targets (26.3).
+    // Must be bumped together with `minecraft_version` in gradle.properties.
+    private const val DATA_VERSION = 5023
 
     fun write(schematic: Schematic): CompoundBinaryTag {
         val size   = schematic.size
